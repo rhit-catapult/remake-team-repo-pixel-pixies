@@ -1,15 +1,43 @@
 import pygame
 import random
+import sys
 
+# player = pygame.transform.scale(pygame.image.load('Fairy.png'),(800,600))
 
-#platforms
 class Platforms:
     def __init__(self, screen, x, y):
         self.screen = screen
         self.x = x
         self.y = y
+    def draw(self):
+        pygame.draw.rect(self.screen, (0, 0, 0), (self.x, self.y, 200, 40))
 
-def draw(self):
-    pygame.draw.rect(self.screen, (255,255,255), (10, 3, 3, 2, 2))
+def main():
+    pygame.init()
+    clock = pygame.time.Clock()
+    pygame.display.set_caption("Testing the Platforms Only")
+    screen = pygame.display.set_mode((640, 650))
 
-Platforms.draw()
+    test = Platforms(screen, 0, 610)
+    while True:
+        screen.fill((255, 255, 255))
+        clock.tick(60)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+
+
+
+        test.draw()
+        pygame.display.update()
+
+
+# Testing the classes
+if __name__ == "__main__":
+    main()
+
+
+
+
+

@@ -35,13 +35,12 @@ def main():
     clock = pygame.time.Clock()
     WHITE = (255,255,255)
     BLACK = (0,0,0)
-
+    pressed_keys = pygame.key.get_pressed()
 
     while True:
         clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                pressed_keys = pygame.key.get_pressed()
                 if pressed_keys[pygame.K_SPACE]:
                     Fairy.Jump
             if event.type == pygame.QUIT:
