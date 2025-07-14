@@ -19,17 +19,13 @@ class Scoreboard:
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((735, 412))
+    screen = pygame.display.set_mode((735, 415))
     background = pygame.image.load("Background.jpg")
     screen.blit(background, (0, 0))
-    background = pygame.transform.scale(background, (735, 412))
 
     scoreboard = Scoreboard(screen)
-    scoreboard.draw()
-
-    pygame.display.update()
-
     clock = pygame.time.Clock()
+
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -37,7 +33,9 @@ def main():
                 sys.exit()
             pressed_keys = pygame.key.get_pressed()
             if pressed_keys[pygame.K_UP]:
-                scoreboard.score = scoreboard.score + 1
-                print("your score went up")
+                scoreboard.score = scoreboard.score + 100
+
+        scoreboard.draw()
+        pygame.display.update()
 
 main()
