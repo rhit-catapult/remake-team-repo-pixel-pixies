@@ -13,8 +13,8 @@ class Platforms:
     def draw(self):
         pygame.draw.rect(self.screen, (0, 0, 0), (self.x, self.y, 200, 40))
 
-    def platform(self):
-        
+    # def platform(self):
+
 
 def main():
     pygame.init()
