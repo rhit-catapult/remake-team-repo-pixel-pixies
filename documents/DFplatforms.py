@@ -9,24 +9,27 @@ class Platforms:
         self.screen = screen
         self.x = x
         self.y = y
+
     def draw(self):
         pygame.draw.rect(self.screen, (0, 0, 0), (self.x, self.y, 200, 40))
+
+    def platform(self):
+        
 
 def main():
     pygame.init()
     clock = pygame.time.Clock()
     pygame.display.set_caption("Testing the Platforms Only")
-    screen = pygame.display.set_mode((640, 650))
+    screen = pygame.display.set_mode((1280, 640))
 
-    test = Platforms(screen, 0, 610)
+    test = Platforms(screen, random.randint(3, 640), random.randint(3, 320))
+
     while True:
         screen.fill((255, 255, 255))
         clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-
-
 
 
         test.draw()
