@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 import math
 pygame.init()
 
@@ -8,7 +9,7 @@ def main():
     pygame.display.set_caption("Dahlia's Flight")
     clock = pygame.time.Clock()
     image1 = pygame.image.load("pixiedust.png")
-    dust = pixiedust(image1, 400, 550)  # Display at (100, 100)
+    dust = pixiedust(image1, random.randint(25,775),550)
     # pickup_sound = pygame.mixer.Sound("pickupPD.wav")
     WHITE = pygame.Color("white")
     BLACK = pygame.Color("black")

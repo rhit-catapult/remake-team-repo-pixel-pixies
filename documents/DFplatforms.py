@@ -13,8 +13,8 @@ class Platforms:
     def draw(self):
         pygame.draw.rect(self.screen, (0, 0, 0), (self.x, self.y, 200, 40))
 
-    def platform(self):
-        
+    # def platform(self):
+
 
 def main():
     pygame.init()
@@ -22,7 +22,7 @@ def main():
     pygame.display.set_caption("Testing the Platforms Only")
     screen = pygame.display.set_mode((1280, 640))
 
-    test = Platforms(screen, random.randint(3, 640), random.randint(3, 320))
+    test = Platforms(screen, random.randint(0, 640), random.randint(3, 320))
 
     while True:
         screen.fill((255, 255, 255))
