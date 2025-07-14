@@ -7,7 +7,9 @@ class Fairy:
         self.x = x
         self.y = y
         self.image = pygame.image.load(filename)
+        self.image.set_colorkey((255,255,255))
         self.image = pygame.transform.scale(self.image, (150, 150))
+
 
     def draw(self):
         self.screen.blit(self.image, (self.x,self.y))
@@ -15,10 +17,10 @@ class Fairy:
 
     def move(self,movement):
         self.x = self.x + movement
-        self.y = self.y + movement
 
-        left_bound = 0 - self.image.get_width() / 2
-        right_bound = self.screen.get_width() / 2 - self.image.get_width() / 2
+
+        left_bound = 0 - self.image.get_width() * 0.2
+        right_bound =  self.screen.get_width() - self.image.get_width() + self.image.get_width() * 0.3
         if self.x < left_bound:
             self.x = left_bound
         if self.x > right_bound:
@@ -28,8 +30,9 @@ class Fairy:
         self.y = self.y + Jump_hight
 
 
-    #def lives(self):
-
+    def MagicGravity(self,Gravity_amount):
+        if self.y < self.screen.get_height()- self.image.get_height():
+            self.y = self.y + Gravity_amount
 
 
 def main():
@@ -44,12 +47,12 @@ def main():
 
     while True:
         clock.tick(60)
-        screen.fill(WHITE)
+        screen.fill((255,255,255))
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 pressed_keys = pygame.key.get_pressed()
                 if pressed_keys[pygame.K_SPACE]:
-                    testfairy.Jump(-20)
+                    testfairy.Jump(-100)
             if event.type == pygame.QUIT:
                 sys.exit()
 
@@ -60,7 +63,9 @@ def main():
         if pressed_keys[pygame.K_RIGHT]:
             testfairy.move(5)
 
+        testfairy.MagicGravity(5)
         testfairy.draw()
+
 
         pygame.display.update()
 
