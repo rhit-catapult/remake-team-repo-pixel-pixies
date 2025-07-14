@@ -7,10 +7,6 @@ class Scoreboard:
         self.score = 0
         self.font = pygame.font.SysFont("gabriola", 40)
 
-        # fonts = pygame.font.get_fonts()
-        # for font in sorted(fonts):
-        #     print(font)
-
     def draw(self):
         as_image = self.font.render(f" Score: {self.score} ", True, (255, 255, 255), (0, 0, 0))
         self.screen.blit(as_image, (5, 5))
@@ -57,8 +53,6 @@ def main():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 click_position = event.pos
-
-
 
         scoreboard.draw()
         pygame.display.update()
