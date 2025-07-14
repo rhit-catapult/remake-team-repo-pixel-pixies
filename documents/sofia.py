@@ -1,4 +1,3 @@
-#hi
 import pygame
 import sys
 
