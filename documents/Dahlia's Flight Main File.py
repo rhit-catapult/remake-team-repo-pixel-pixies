@@ -46,7 +46,7 @@ def main():
 
 
     while True:
-        clock.tick(60)
+        clock.tick(95)
         screen.fill((255,255,255))
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
