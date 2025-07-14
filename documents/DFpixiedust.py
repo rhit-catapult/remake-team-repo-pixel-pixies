@@ -1,46 +1,46 @@
 import pygame
 import sys
+import math
+pygame.init()
 
 def main():
-    pygame.init()
     screen = pygame.display.set_mode((800, 600))
     pygame.display.set_caption("Dahlia's Flight")
     clock = pygame.time.Clock()
     image1 = pygame.image.load("pixiedust.png")
-    pickup_sound = pygame.mixer.Sound("pickupPD.wav")
-    IMAGE_SIZE = 50
-    WHITE = (255, 255, 255)
-    BLACK = (0, 0, 0)
+    dust = pixiedust(image1, 400, 550)  # Display at (100, 100)
+    # pickup_sound = pygame.mixer.Sound("pickupPD.wav")
+    WHITE = pygame.Color("white")
+    BLACK = pygame.Color("black")
 
-    image1 = pygame.transform.scale(image1, (IMAGE_SIZE, IMAGE_SIZE))
-    pygame.init()
     while True:
         clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-        screen.fill((WHITE))
+        screen.fill(WHITE)
+        dust.draw(screen)
         pygame.display.update()
 
+
+        #if event.type ==  # hero hits pixdust
+        # pickup_sound.play()
+        # def hit(self):
+        #     if hero
+
+
+
 class pixiedust:
-    image1 = pygame.transform.scale(image1, (IMAGE_SIZE, IMAGE_SIZE))
-    def __init__(self, screen, x, y):
-        self.screen = screen
+    def __init__(self, image, x, y):
+        self.image = image
         self.x = x
         self.y = y
+        pygame.display.update()
 
-    def draw(self):
-        self.screen.blit(self.pixiedust, (self.x, self.y))
-
-# def hit(self):
-#     if hero
-
-# while True:
-    # for event in pygame.event.get():
-        # if event.type == #hero hits pixdust
-        #     pickup_sound.play()
-    # screen.blit(image1, (0, 0))
-    pygame.display.update()
+    def draw(self, screen):
+        screen.blit(self.image, (self.x, self.y))
+        self.image = pygame.transform.scale(self.image, (75, 50))
 
 main()
+
 

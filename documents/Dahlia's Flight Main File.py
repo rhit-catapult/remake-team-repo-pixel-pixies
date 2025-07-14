@@ -2,14 +2,16 @@ import pygame
 import sys
 
 class Fairy:
-    def __init__(self,screen,x,y):
+    def __init__(self,screen,x,y,filename):
         self.screen = screen
         self.x = x
         self.y = y
+        self.image = pygame.image.load(filename)
+        self.image = pygame.transform.scale(self.image, (150, 150))
 
     def draw(self):
-        self.image = pygame.image.load("")
-        #self.image.set_colorkey((0,0,0))
+        self.screen.blit(self.image, (self.x,self.y))
+
 
     def move(self,movement):
         self.x = self.x + movement
@@ -21,7 +23,9 @@ class Fairy:
             self.x = left_bound
         if self.x > right_bound:
             self.x = right_bound
-        # jump
+
+    def Jump (self,Jump_hight):
+        self.y = self.y + Jump_hight
 
 
     #def lives(self):
@@ -30,28 +34,36 @@ class Fairy:
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((800, 600))
+    screen = pygame.display.set_mode((735, 415))
     pygame.display.set_caption("Dahlia's Flight")
     clock = pygame.time.Clock()
     WHITE = (255,255,255)
     BLACK = (0,0,0)
-    pressed_keys = pygame.key.get_pressed()
+    testfairy = Fairy(screen,200,250,"Fairy.png")
+
 
     while True:
         clock.tick(60)
+        screen.fill(WHITE)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
+                pressed_keys = pygame.key.get_pressed()
                 if pressed_keys[pygame.K_SPACE]:
-                    Fairy.Jump
+                    testfairy.Jump(-20)
             if event.type == pygame.QUIT:
                 sys.exit()
-                screen.fill((WHITE))
 
+        pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_LEFT]:
-            Fairy.move(-5)
-            Fairy.move(5)
+            testfairy.move(-5)
+
+        if pressed_keys[pygame.K_RIGHT]:
+            testfairy.move(5)
+
+        testfairy.draw()
 
         pygame.display.update()
 
 
-main()
+if __name__ == "__main__":
+    main()
