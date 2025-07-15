@@ -35,7 +35,7 @@ class Fairy:
             self.y = self.y + Gravity_amount
 
     def Grab (self, dust):
-        hero_grab = pygame.Rect(self.x, self.y, 50, 50)
+        hero_grab = pygame.Rect(self.x, self.y, 75, 75)
         return hero_grab.collidepoint((dust.x, dust.y))
 
 
