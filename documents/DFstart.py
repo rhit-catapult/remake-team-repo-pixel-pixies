@@ -1,15 +1,15 @@
 import pygame
 import sys
 
-class Scoreboard:
-    def __init__(self, screen):
-        self.screen = screen
-        self.score = 0
-        self.font = pygame.font.SysFont("gabriola", 40)
-
-    def draw(self):
-        as_image = self.font.render(f" Score: {self.score} ", True, (255, 255, 255), (0, 0, 0))
-        self.screen.blit(as_image, (5, 5))
+# class Scoreboard:
+#     def __init__(self, screen):
+#         self.screen = screen
+#         self.score = 0
+#         self.font = pygame.font.SysFont("gabriola", 40)
+#
+#     # def draw(self):
+#     #     as_image = self.font.render(f" Score: {self.score} ", True, (255, 255, 255), (0, 0, 0))
+#     #     self.screen.blit(as_image, (5, 5))
 
 class StartButton:
     def __init__(self, screen):
@@ -36,7 +36,7 @@ def main():
     background = pygame.image.load("Background.jpg")
     screen.blit(background, (0, 0))
 
-    scoreboard = Scoreboard(screen)
+    # scoreboard = Scoreboard(screen)
     clock = pygame.time.Clock()
     start = StartButton(screen)
     start.draw()
@@ -48,13 +48,15 @@ def main():
                 sys.exit()
 
             pressed_keys = pygame.key.get_pressed()
-            if pressed_keys[pygame.K_UP]:
-                scoreboard.score = scoreboard.score + 100
+            # if pressed_keys[pygame.K_UP]:
+            #     scoreboard.score = scoreboard.score + 100
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 click_position = event.pos
 
-        scoreboard.draw()
+
+
+        # scoreboard.draw()
         pygame.display.update()
 
 main()
