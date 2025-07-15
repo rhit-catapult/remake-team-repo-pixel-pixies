@@ -13,7 +13,7 @@ class Platforms:
     def draw(self):
         pygame.draw.rect(self.screen, (0, 0, 0), (self.x, self.y, 200, 40))
 
-    # def platform(self):
+    # def platforms(self):
 
 
 def main():
@@ -23,7 +23,12 @@ def main():
     screen = pygame.display.set_mode((1280, 640))
 
     test = Platforms(screen, 0, 600)
-
+    my_platform = []
+    for i in range (5):
+        new_platforms = Platforms(screen,random.randint(0, screen.get_width()),
+                                  random.randint(0, screen.get_height() - 150))
+        
+        my_platform.append(new_platforms)
     while True:
         screen.fill((255, 255, 255))
         clock.tick(60)
@@ -31,8 +36,9 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-
         test.draw()
+        for platform in my_platform:
+            platform.draw()
         pygame.display.update()
 
 
