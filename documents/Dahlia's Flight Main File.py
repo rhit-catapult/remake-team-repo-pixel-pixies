@@ -35,13 +35,19 @@ class Fairy:
         if self.x > right_bound:
             self.x = right_bound
 
+
+
     def Jump (self,Jump_hight):
         self.y = self.y + Jump_hight
-
+        self.Hightlimit()
 
     def MagicGravity(self,Gravity_amount):
         if self.y < self.screen.get_height()- self.imageRight.get_height():
             self.y = self.y + Gravity_amount
+
+    def Hightlimit(self):
+        if self.y < 0:
+            self.y = 0
 
 
 def main():
@@ -75,6 +81,8 @@ def main():
 
         testfairy.MagicGravity(5)
         testfairy.draw()
+
+
 
 
         pygame.display.update()
