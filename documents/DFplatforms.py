@@ -13,21 +13,28 @@ class Platforms:
     def draw(self):
         pygame.draw.rect(self.screen, (0, 0, 0), (self.x, self.y, 200, 40))
 
-    # def platforms(self):
-
+    def too_close(self):
+        if self.x > self.screen.get_width():
+            return True
+        if self.y > self.screen.get_height():
+            return True
+        return False
 
 def main():
     pygame.init()
     clock = pygame.time.Clock()
     pygame.display.set_caption("Testing the Platforms Only")
-    screen = pygame.display.set_mode((1280, 640))
+    screen = pygame.display.set_mode((735, 415))
 
-    test = Platforms(screen, 0, 600)
+    test = Platforms(screen, 0, 375)
     my_platform = []
-    for i in range (5):
-        new_platforms = Platforms(screen,random.randint(0, screen.get_width()),
-                                  random.randint(0, screen.get_height() - 150))
-        
+    platform_positions = [(600, 50),
+                          (150, 160),
+                          (345, 300)]
+    for x,y in platform_positions:
+        # new_platforms = Platforms(screen,random.randint(0, screen.get_width() - 180),
+        #                           random.randint(150, screen.get_height()-40))
+        new_platforms = Platforms(screen, x, y)
         my_platform.append(new_platforms)
     while True:
         screen.fill((255, 255, 255))
