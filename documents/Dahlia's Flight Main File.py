@@ -2,25 +2,29 @@ import pygame
 import sys
 
 class Fairy:
-    def __init__(self,screen,x,y,filename):
+    def __init__(self,screen,x,y):
         self.screen = screen
         self.x = x
         self.y = y
-        self.image = pygame.image.load(filename)
-        self.image.set_colorkey((255,255,255))
-        self.image = pygame.transform.scale(self.image, (150, 150))
 
 
-    def draw(self):
-        self.screen.blit(self.image, (self.x,self.y))
+    def draw(self,filename,image):
+        self.screen.blit(self.image1, (self.x,self.y))
+        self.screen.blit(self.image2, (self.x,self.y))
+        self.image1 = pygame.image.load(filename)
+        self.image1.set_colorkey((255,255,255))
+        self.image1 = pygame.transform.scale(self.image1, (150, 150))
+
+        self.image2 = pygame.image.load(filename)
+        self.image2.set_colorkey((255,255,255))
+        self.image2 = pygame.transform.scale(self.image2, (150, 150))
 
 
-    def move(self,movement):
+    def move(self, movement):
         self.x = self.x + movement
 
-
         left_bound = 0 - self.image.get_width() * 0.2
-        right_bound =  self.screen.get_width() - self.image.get_width() + self.image.get_width() * 0.3
+        right_bound = self.screen.get_width() - self.image.get_width() + self.image.get_width() * 0.3
         if self.x < left_bound:
             self.x = left_bound
         if self.x > right_bound:
@@ -59,6 +63,7 @@ def main():
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_LEFT]:
             testfairy.move(-5)
+            testfairy.testfairy(screen,"Fairy2.png")
 
         if pressed_keys[pygame.K_RIGHT]:
             testfairy.move(5)
