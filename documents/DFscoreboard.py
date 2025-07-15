@@ -23,11 +23,11 @@ class pixiedust:
         self.image = image
         self.x = x
         self.y = y
-        pygame.display.update()
+        self.image.set_colorkey((255,255,0))
+        self.image = pygame.transform.scale(self.image, (75, 50))
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
-        self.image = pygame.transform.scale(self.image, (75, 50))
 
 def main():
     pygame.init()
