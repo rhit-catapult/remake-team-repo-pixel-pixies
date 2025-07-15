@@ -25,11 +25,11 @@ def main():
     pygame.display.set_caption("Testing the Platforms Only")
     screen = pygame.display.set_mode((735, 415))
 
-    test = Platforms(screen, 0, 600)
+    test = Platforms(screen, 0, 375)
     my_platform = []
-    platform_positions = [(50, 100),
-                          (150, 200),
-                          (300, 300)]
+    platform_positions = [(600, 50),
+                          (150, 160),
+                          (345, 300)]
     for x,y in platform_positions:
         # new_platforms = Platforms(screen,random.randint(0, screen.get_width() - 180),
         #                           random.randint(150, screen.get_height()-40))

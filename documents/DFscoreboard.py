@@ -35,7 +35,7 @@ class Fairy:
             self.y = self.y + Gravity_amount
 
     def Grab (self, dust):
-        hero_grab = pygame.Rect(self.x, self.y, 50, 50)
+        hero_grab = pygame.Rect(self.x, self.y, 75, 75)
         return hero_grab.collidepoint((dust.x, dust.y))
 
 
@@ -90,12 +90,11 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            # pressed_keys = pygame.key.get_pressed()
-            # if pressed_keys[pygame.K_UP]:
-            #     scoreboard.score = scoreboard.score + 100
+            if event.type == pygame.KEYDOWN:
+                pressed_keys = pygame.key.get_pressed()
+                if pressed_keys[pygame.K_UP]:
+                    testfairy.Jump(-100)
 
-        if pressed_keys[pygame.K_UP]:
-            testfairy.Jump(-20)
         if pressed_keys[pygame.K_LEFT]:
             testfairy.move(-5)
         if pressed_keys[pygame.K_RIGHT]:
