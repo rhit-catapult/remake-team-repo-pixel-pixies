@@ -22,7 +22,7 @@ def main():
     pygame.display.set_caption("Testing the Platforms Only")
     screen = pygame.display.set_mode((1280, 640))
 
-    test = Platforms(screen, random.randint(0, 640), random.randint(3, 320))
+    test = Platforms(screen, 0, 600)
 
     while True:
         screen.fill((255, 255, 255))
