@@ -83,6 +83,7 @@ def main():
     pygame.display.set_caption("Dahlia's Flight")
     background = pygame.image.load("Background.jpg")
     clock = pygame.time.Clock()
+    music = pygame.mixer.Sound("StartingScreenMusic.mp3")
     WHITE = (255,255,255)
     BLACK = (0,0,0)
 
