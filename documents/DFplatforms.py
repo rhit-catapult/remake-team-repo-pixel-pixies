@@ -1,5 +1,4 @@
 import pygame
-import random
 import sys
 
 # player = pygame.transform.scale(pygame.image.load('Fairy.png'),(800,600))
@@ -11,7 +10,7 @@ class Platforms:
         self.y = y
 
     def draw(self):
-        pygame.draw.rect(self.screen, (0, 0, 0), (self.x, self.y, 200, 40))
+        pygame.draw.rect(self.screen, (0, 0, 0), (self.x, self.y, 100, 40))
 
     def too_close(self):
         if self.x > self.screen.get_width():
@@ -42,6 +41,11 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+
+        #Getting coordinates for platforms
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                click_position = event.pos
+                print(click_position)
 
         test.draw()
         for platform in my_platform:
