@@ -77,6 +77,23 @@ class pixiedust:
         screen.blit(self.image, (self.x, self.y))
 
 
+class Platforms:
+    def __init__(self, screen, x, y):
+        self.screen = screen
+        self.x = x
+        self.y = y
+
+    def draw(self):
+        pygame.draw.rect(self.screen, (112, 59, 40), (self.x, self.y, 100, 40))
+
+    def too_close(self):
+        if self.x > self.screen.get_width():
+            return True
+        if self.y > self.screen.get_height():
+            return True
+        return False
+
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode((735, 415))
@@ -95,6 +112,16 @@ def main():
     items.append(dust)
     pickup_sound = pygame.mixer.Sound("pickupPD.wav")
 
+    test = Platforms(screen, 10, 375)
+    my_platform = []
+    platform_positions = [(600, 50),
+                          (150, 160),
+                          (345, 300)]
+
+    for x,y in platform_positions:
+        new_platforms = Platforms(screen, x, y)
+        my_platform.append(new_platforms)
+
     while True:
         screen.blit(background, (0,0))
         clock.tick(60)
@@ -106,6 +133,9 @@ def main():
                     testfairy.Jump(-100)
             if event.type == pygame.QUIT:
                 sys.exit()
+
+        for platform in my_platform:
+            platform.draw()
 
         if pressed_keys[pygame.K_LEFT]:
             testfairy.move(-5)
@@ -122,6 +152,7 @@ def main():
 
         testfairy.MagicGravity(5)
         testfairy.draw()
+        test.draw()
         scoreboard.draw()
         pygame.display.update()
 

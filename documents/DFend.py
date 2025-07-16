@@ -1,30 +1,16 @@
 import pygame
 import sys
 
-class Portal:
-    def __init__(self, screen, x, y, image):
-        self.screen = screen
-        self.x = x
-        self.y = y
-
-        #self.image = pygame.image.load("portal.png")
-        # self.image.set_colorkey((255, 255, 255))
-        # self.image = pygame.transform.scale(self.image, (150, 150))
-
-    def draw(self):
-        self.screen.blit(self.image, (self.x, self.y))
-
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((735, 415))
     background = pygame.image.load("Portal_Place_Pixelated.png")
-    portal = Portal(screen, 100, 100, "portal.png")
     IMAGE_HEIGHT = 415
     IMAGE_WIDTH = 735
     background = pygame.transform.scale(background, (IMAGE_WIDTH, IMAGE_HEIGHT))
-
-    portal = pygame.image.load("Portal_Place_Pixelated.png")
+    image = pygame.image.load("portal.png")
+    image = pygame.transform.scale(image, (225, 225))
 
     clock = pygame.time.Clock()
 
@@ -35,7 +21,7 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-        portal.draw()
+        screen.blit(image, (230, 100))
         pygame.display.update()
 
 main()
