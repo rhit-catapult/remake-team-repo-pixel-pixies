@@ -10,7 +10,7 @@ class Platforms:
         self.y = y
 
     def draw(self):
-        pygame.draw.rect(self.screen, (112, 59, 40), (self.x, self.y, 100, 40))
+        pygame.draw.rect(self.screen, (86, 63, 43), (self.x, self.y, 100, 30))
 
     def too_close(self):
         if self.x > self.screen.get_width():
@@ -25,7 +25,7 @@ def main():
 
     pygame.init()
     screen = pygame.display.set_mode((IMAGE_SIZE1, IMAGE_SIZE2))
-    image1 = pygame.image.load("Level_background.png")
+    image1 = pygame.image.load("Background.jpg")
     image1 = pygame.transform.scale(image1, (IMAGE_SIZE1, IMAGE_SIZE2))
 
     clock = pygame.time.Clock()
@@ -33,9 +33,10 @@ def main():
 
     test = Platforms(screen, 10, 375)
     my_platform = []
-    platform_positions = [(600, 50),
+    platform_positions = [(415, 62),
                           (150, 160),
-                          (345, 300)]
+                          (345, 300),
+                          (590, 207)]
 
     for x,y in platform_positions:
         # new_platforms = Platforms(screen,random.randint(0, screen.get_width() - 180),
