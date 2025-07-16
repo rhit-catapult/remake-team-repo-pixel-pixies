@@ -184,7 +184,7 @@ def main():
             if testfairy.Grab(dust):
                 if dust in items:
                     items.remove(dust)
-                    pygame.mixer.Sound.play(pickup_sound)
+                    pickup_sound.play()
                     scoreboard.score = scoreboard.score + 100
 
             testfairy.draw()
