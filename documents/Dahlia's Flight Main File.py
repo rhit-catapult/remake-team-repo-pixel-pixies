@@ -48,7 +48,7 @@ class Fairy:
             self.y = 0
 
     def Grab (self, dust):
-        hero_grab = pygame.Rect(self.x, self.y, 150, 150)
+        hero_grab = pygame.Rect(self.x, self.y, 75, 75)
         return hero_grab.collidepoint((dust.x, dust.y))
 
     def Land (self, platform):
@@ -130,11 +130,10 @@ def main():
     scoreboard = Scoreboard(screen)
     testfairy = Fairy(screen,25,250,"Fairy2.png", "Fairy.png")
     image1 = pygame.image.load("pixiedust.png")
-    dust = pixiedust(image1, random.randint(200, 675), random.randint(100, 300))
+    dust = pixiedust(image1, random.randint(200, 600), random.randint(50, 300))
     items = []
     items.append(dust)
     pickup_sound = pygame.mixer.Sound("pickupPD.wav")
-
 
     my_platform = []
     platform_positions = [(600, 155),
@@ -148,7 +147,6 @@ def main():
     while True:
         screen.blit(background, (0,0))
         clock.tick(60)
-
 
         pressed_keys = pygame.key.get_pressed()
         for event in pygame.event.get():
@@ -190,6 +188,9 @@ def main():
                     items.remove(dust)
                     pickup_sound.play()
                     scoreboard.score = scoreboard.score + 100
+            if item in items == False:
+                items.append(dust)
+                item.draw(screen)
 
             testfairy.draw()
             scoreboard.draw()
