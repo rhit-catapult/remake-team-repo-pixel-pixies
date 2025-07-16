@@ -46,12 +46,12 @@ class Fairy:
             self.y = 0
 
     def Grab (self, dust):
-        hero_grab = pygame.Rect(self.x, self.y, 75, 75)
+        hero_grab = pygame.Rect(self.x, self.y, 150, 150)
         return hero_grab.collidepoint((dust.x, dust.y))
 
-    # def Land (self, test):
-    #     hero_land = pygame.Rect(self.x, self.y, 75, 75)
-    #     return hero_land.collidepoint((test.x, test.y))
+    def Land (self, platform):
+        hero_land = pygame.Rect(self.x, self.y + 100, 150, 150)
+        return hero_land.colliderect(platform.rect)
 
 
 class Scoreboard:
@@ -86,6 +86,7 @@ class Platforms:
         self.screen = screen
         self.x = x
         self.y = y
+        self.rect = pygame.Rect(self.x, self.y, 100, 40)
 
     def draw(self):
         pygame.draw.rect(self.screen, (112, 59, 40), (self.x, self.y, 100, 40))
@@ -144,15 +145,19 @@ def main():
                 if pressed_keys[pygame.K_UP]:
                     testfairy.Jump(-100)
 
+        hit_a_platform = False
+        for platform in my_platform:
+            platform.draw()
+            hit = testfairy.Land(platform)
+            if hit == True:
+                hit_a_platform = True
+        if hit_a_platform == False:
+            testfairy.MagicGravity(5)
+
         if pressed_keys[pygame.K_LEFT]:
             testfairy.move(-5)
         if pressed_keys[pygame.K_RIGHT]:
             testfairy.move(5)
-
-        for platform in my_platform:
-            platform.draw()
-
-
 
         for item in items:
             item.draw(screen)
@@ -162,7 +167,6 @@ def main():
                 pygame.mixer.Sound.play(pickup_sound)
                 scoreboard.score = scoreboard.score + 100
 
-        testfairy.MagicGravity(5)
         testfairy.draw()
         test.draw()
         scoreboard.draw()
