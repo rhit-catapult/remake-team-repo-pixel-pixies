@@ -26,6 +26,7 @@ def distance(point1, point2):
     distance = math.sqrt((point1_x - point2_x)**2 + (point1_y - point2_y)**2)
     return distance
 
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode((735, 415))
@@ -48,14 +49,14 @@ def main():
 
             # pressed_keys = pygame.key.get_pressed()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                print("clicked")
+                # print("clicked")
                 retangal =  start.rect
-                print(retangal.x, retangal.y)
+                # print(retangal.x, retangal.y)
                 result = retangal.collidepoint(event.pos)
-                print(result)
+                # print(result)
                 if retangal.collidepoint(event.pos):
                     background = game_background
-                    print("I clicked!!")
+                    # print("I clicked!!")
 
         if background == game_background:
             pass
@@ -65,4 +66,5 @@ def main():
 
         pygame.display.update()
 
-main()
+if __name__ == "__main__":
+    main()

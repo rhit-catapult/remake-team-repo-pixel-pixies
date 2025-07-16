@@ -1,6 +1,9 @@
 import pygame
 import sys
 import random
+import DFstart
+
+
 
 class Fairy:
     def __init__(self,screen,x,y,Leftfile,Rightfile):
@@ -104,8 +107,13 @@ def main():
     font = pygame.font.Font(None, 25)
     screen = pygame.display.set_mode((735, 415))
     pygame.display.set_caption("Dahlia's Flight")
-    background = pygame.image.load("Background.jpg")
+
+    start_background = pygame.image.load("Level_background.png")
+    game_background = pygame.image.load("Background.jpg")
+    background = start_background
+
     clock = pygame.time.Clock()
+    start = DFstart.StartButton(screen)
 
     instruction_text = "Dahlia's Flight"
     text_color = (222, 222, 0)
@@ -123,7 +131,7 @@ def main():
     items.append(dust)
     pickup_sound = pygame.mixer.Sound("pickupPD.wav")
 
-    test = Platforms(screen, 0, 375)
+
     my_platform = []
     platform_positions = [(600, 155),
                           (150, 160),
@@ -136,40 +144,55 @@ def main():
     while True:
         screen.blit(background, (0,0))
         clock.tick(60)
+
+
         pressed_keys = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                retangal = start.rect
+                if retangal.collidepoint(event.pos):
+                    background = game_background
+
+
+
             if event.type == pygame.KEYDOWN:
                 pressed_keys = pygame.key.get_pressed()
                 if pressed_keys[pygame.K_UP]:
                     testfairy.Jump(-100)
 
-        hit_a_platform = False
-        for platform in my_platform:
-            platform.draw()
-            hit = testfairy.Land(platform)
-            if hit == True:
-                hit_a_platform = True
-        if hit_a_platform == False:
-            testfairy.MagicGravity(5)
+        if background == game_background:
+            hit_a_platform = False
+            for platform in my_platform:
+                platform.draw()
+                hit = testfairy.Land(platform)
+                if hit == True:
+                    # print(platform.rect)
+                    hit_a_platform = True
+            if hit_a_platform == False:
+                testfairy.MagicGravity(5)
 
-        if pressed_keys[pygame.K_LEFT]:
-            testfairy.move(-5)
-        if pressed_keys[pygame.K_RIGHT]:
-            testfairy.move(5)
+            if pressed_keys[pygame.K_LEFT]:
+                testfairy.move(-5)
+            if pressed_keys[pygame.K_RIGHT]:
+                testfairy.move(5)
 
-        for item in items:
-            item.draw(screen)
-        if testfairy.Grab(dust):
-            if dust in items:
-                items.remove(dust)
-                pygame.mixer.Sound.play(pickup_sound)
-                scoreboard.score = scoreboard.score + 100
+            for item in items:
+                item.draw(screen)
+            if testfairy.Grab(dust):
+                if dust in items:
+                    items.remove(dust)
+                    pygame.mixer.Sound.play(pickup_sound)
+                    scoreboard.score = scoreboard.score + 100
 
-        testfairy.draw()
-        test.draw()
-        scoreboard.draw()
+            testfairy.draw()
+            scoreboard.draw()
+        else:
+            start.draw()
+
+
         pygame.display.update()
 
 
