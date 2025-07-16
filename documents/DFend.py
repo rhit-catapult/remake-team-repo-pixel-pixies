@@ -21,7 +21,7 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-        screen.blit(image, (290, 100))
+        screen.blit(image, (230, 100))
         pygame.display.update()
 
 main()
