@@ -1,6 +1,9 @@
 import pygame
 import sys
 
+from pygame import MOUSEBUTTONDOWN
+
+
 # class Scoreboard:
 #     def __init__(self, screen):
 #         self.screen = screen
@@ -16,10 +19,11 @@ class StartButton:
         self.screen = screen
         self.font = pygame.font.SysFont("gabriola", 100)
 
-    def draw(self):
+    def draw(self, Button):
         as_image = self.font.render(" Start ", True, (255, 255, 255), (56, 118, 29))
         self.screen.blit(as_image, (self.screen.get_width() / 2 - as_image.get_width() / 2,
                                     self.screen.get_height() / 2 - as_image.get_height() / 2))
+
 
 def distance(point1, point2):
     point1_x = point1[0]
@@ -47,12 +51,19 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
 
+            gamescreen = screen()
+
             pressed_keys = pygame.key.get_pressed()
             # if pressed_keys[pygame.K_UP]:
             #     scoreboard.score = scoreboard.score + 100
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 click_position = event.pos
+
+        if click_position = StartButton:
+            Screen = pygame.display.gamescreen
+
+
 
 
 
