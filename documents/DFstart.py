@@ -60,7 +60,6 @@ def main():
 
 
 
-
         start.draw()
 
         pygame.display.update()
