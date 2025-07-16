@@ -4,7 +4,6 @@ import random
 import DFstart
 
 
-
 class Fairy:
     def __init__(self,screen,x,y,Leftfile,Rightfile):
         self.screen = screen
