@@ -9,7 +9,6 @@ def main():
     IMAGE_WIDTH = 735
     background = pygame.transform.scale(background, (IMAGE_WIDTH, IMAGE_HEIGHT))
 
-    # scoreboard = Scoreboard(screen)
     clock = pygame.time.Clock()
 
     while True:
