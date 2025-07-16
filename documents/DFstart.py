@@ -4,25 +4,16 @@ import sys
 from pygame import MOUSEBUTTONDOWN
 
 
-# class Scoreboard:
-#     def __init__(self, screen):
-#         self.screen = screen
-#         self.score = 0
-#         self.font = pygame.font.SysFont("gabriola", 40)
-#
-#     # def draw(self):
-#     #     as_image = self.font.render(f" Score: {self.score} ", True, (255, 255, 255), (0, 0, 0))
-#     #     self.screen.blit(as_image, (5, 5))
-
 class StartButton:
     def __init__(self, screen):
         self.screen = screen
         self.font = pygame.font.SysFont("gabriola", 100)
 
-    def draw(self, Button):
-        as_image = self.font.render(" Start ", True, (255, 255, 255), (56, 118, 29))
-        self.screen.blit(as_image, (self.screen.get_width() / 2 - as_image.get_width() / 2,
-                                    self.screen.get_height() / 2 - as_image.get_height() / 2))
+    def draw(self):
+        start_button = self.font.render(" Start ", True, (255, 255, 255), (56, 118, 29))
+        self.screen.blit(start_button, (self.screen.get_width() / 2 - start_button.get_width() / 2,
+                                    self.screen.get_height() / 2 - start_button.get_height() / 2))
+
 
 
 def distance(point1, point2):
@@ -42,10 +33,10 @@ def main():
     background = start_background
 
 
-    # scoreboard = Scoreboard(screen)
+
     clock = pygame.time.Clock()
-    # start = StartButton(screen)
-    # start.draw()
+    start = StartButton(screen)
+
 
     while True:
         clock.tick(60)
@@ -54,11 +45,11 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-
-
-            pressed_keys = pygame.key.get_pressed()
+            # pressed_keys = pygame.key.get_pressed()
             if event.type == pygame.MOUSEBUTTONDOWN:
-               background = game_background
+                background = game_background
+                start_button = pygame.Rect(self.x, self.y, 75, 75)
+                if start_button.collidepoint()
 
 
 
@@ -67,7 +58,11 @@ def main():
 
 
 
-        # scoreboard.draw()
+
+
+
+        start.draw()
+
         pygame.display.update()
 
 main()
