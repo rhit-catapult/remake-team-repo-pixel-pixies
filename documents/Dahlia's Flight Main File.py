@@ -183,14 +183,13 @@ def main():
 
             for item in items:
                 item.draw(screen)
-            if testfairy.Grab(dust):
+            if testfairy.Grab(item):
                 if dust in items:
-                    items.remove(dust)
                     pickup_sound.play()
                     scoreboard.score = scoreboard.score + 100
-            if item in items == False:
-                items.append(dust)
-                item.draw(screen)
+
+                    item.x = random.randint(200, 600)
+                    item.y = random.randint(50, 300)
 
             testfairy.draw()
             scoreboard.draw()
