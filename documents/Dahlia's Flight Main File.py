@@ -118,7 +118,7 @@ def main():
 
     test = Platforms(screen, 0, 375)
     my_platform = []
-    platform_positions = [(600, 50),
+    platform_positions = [(600, 155),
                           (150, 160),
                           (345, 300)]
 
