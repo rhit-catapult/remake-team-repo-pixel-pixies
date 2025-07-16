@@ -8,7 +8,7 @@ class StartButton:
     def __init__(self, screen):
         self.screen = screen
         self.font = pygame.font.SysFont("gabriola", 100)
-        self.start_button = self.font.render(" Start ", True, (255, 255, 255), (56, 118, 29))
+        self.start_button = self.font.render(" Start ", True, (255, 255, 255), (57, 96, 197))
         self.x = self.screen.get_width() / 2 - self.start_button.get_width() / 2
         self.y = self.screen.get_height() / 2 - self.start_button.get_height() / 2
         self.rect = pygame.Rect(self.x, self.y, self.start_button.get_width(), self.start_button.get_height())
