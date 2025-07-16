@@ -7,7 +7,6 @@ def main():
     background = pygame.image.load("Portal_Place.jpg")
     screen.blit(background, (0, 0))
 
-    # scoreboard = Scoreboard(screen)
     clock = pygame.time.Clock()
 
     while True:
