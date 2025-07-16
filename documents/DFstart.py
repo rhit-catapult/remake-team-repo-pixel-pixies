@@ -8,13 +8,11 @@ class StartButton:
     def __init__(self, screen):
         self.screen = screen
         self.font = pygame.font.SysFont("gabriola", 100)
-
+        self.start_button = self.font.render(" Start ", True, (255, 255, 255), (56, 118, 29))
+        self.x = self.screen.get_width() / 2 - self.start_button.get_width() / 2
+        self.y = self.screen.get_height() / 2 - self.start_button.get_height() / 2
     def draw(self):
-        start_button = self.font.render(" Start ", True, (255, 255, 255), (56, 118, 29))
-        self.screen.blit(start_button, (self.screen.get_width() / 2 - start_button.get_width() / 2,
-                                    self.screen.get_height() / 2 - start_button.get_height() / 2))
-
-
+        self.screen.blit(self.start_button, self.x, self.y)
 
 def distance(point1, point2):
     point1_x = point1[0]
@@ -48,7 +46,7 @@ def main():
             # pressed_keys = pygame.key.get_pressed()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 background = game_background
-                start_button = pygame.Rect(self.x, self.y, 75, 75)
+                start_button =
                 if start_button.collidepoint()
 
 
