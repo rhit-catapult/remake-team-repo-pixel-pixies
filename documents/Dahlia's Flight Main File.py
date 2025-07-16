@@ -104,12 +104,17 @@ class Platforms:
 
 def main():
     pygame.init()
+    IMAGE_X = 735
+    IMAGE_Y = 415
     font = pygame.font.Font(None, 25)
-    screen = pygame.display.set_mode((735, 415))
+    screen = pygame.display.set_mode((IMAGE_X, IMAGE_Y))
+    #screen = pygame.display.set_mode((735, 415))
     pygame.display.set_caption("Dahlia's Flight")
 
     start_background = pygame.image.load("Level_background.png")
     game_background = pygame.image.load("Background.jpg")
+    game_background = pygame.transform.scale(game_background, (IMAGE_X, IMAGE_Y))
+    start_background = pygame.transform.scale(start_background, (IMAGE_X, IMAGE_Y))
     background = start_background
 
     clock = pygame.time.Clock()
@@ -189,6 +194,7 @@ def main():
 
             testfairy.draw()
             scoreboard.draw()
+
         else:
             start.draw()
 
