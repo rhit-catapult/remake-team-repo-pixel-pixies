@@ -46,8 +46,12 @@ class Fairy:
             self.y = 0
 
     def Grab (self, dust):
-        hero_grab = pygame.Rect(self.x, self.y, 75, 75)
+        hero_grab = pygame.Rect(self.x, self.y, 150, 150)
         return hero_grab.collidepoint((dust.x, dust.y))
+
+    def Land (self, platform):
+        hero_land = pygame.Rect(self.x, self.y + 100, 150, 150)
+        return hero_land.colliderect(platform.rect)
 
 
 class Scoreboard:
@@ -82,6 +86,7 @@ class Platforms:
         self.screen = screen
         self.x = x
         self.y = y
+        self.rect = pygame.Rect(self.x, self.y, 100, 40)
 
     def draw(self):
         pygame.draw.rect(self.screen, (112, 59, 40), (self.x, self.y, 100, 40))
@@ -96,10 +101,16 @@ class Platforms:
 
 def main():
     pygame.init()
+    font = pygame.font.Font(None, 25)
     screen = pygame.display.set_mode((735, 415))
     pygame.display.set_caption("Dahlia's Flight")
     background = pygame.image.load("Background.jpg")
     clock = pygame.time.Clock()
+
+    instruction_text = "Dahlia's Flight"
+    text_color = (222, 222, 0)
+    instructions_image = font.render(instruction_text, True, text_color)
+
     music = pygame.mixer.Sound("StartingScreenMusic.mp3")
     WHITE = (255,255,255)
     BLACK = (0,0,0)
@@ -112,9 +123,9 @@ def main():
     items.append(dust)
     pickup_sound = pygame.mixer.Sound("pickupPD.wav")
 
-    test = Platforms(screen, 10, 375)
+    test = Platforms(screen, 0, 375)
     my_platform = []
-    platform_positions = [(600, 50),
+    platform_positions = [(600, 155),
                           (150, 160),
                           (345, 300)]
 
@@ -127,15 +138,21 @@ def main():
         clock.tick(60)
         pressed_keys = pygame.key.get_pressed()
         for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
             if event.type == pygame.KEYDOWN:
                 pressed_keys = pygame.key.get_pressed()
                 if pressed_keys[pygame.K_UP]:
                     testfairy.Jump(-100)
-            if event.type == pygame.QUIT:
-                sys.exit()
 
+        hit_a_platform = False
         for platform in my_platform:
             platform.draw()
+            hit = testfairy.Land(platform)
+            if hit == True:
+                hit_a_platform = True
+        if hit_a_platform == False:
+            testfairy.MagicGravity(5)
 
         if pressed_keys[pygame.K_LEFT]:
             testfairy.move(-5)
@@ -150,7 +167,6 @@ def main():
                 pygame.mixer.Sound.play(pickup_sound)
                 scoreboard.score = scoreboard.score + 100
 
-        testfairy.MagicGravity(5)
         testfairy.draw()
         test.draw()
         scoreboard.draw()
