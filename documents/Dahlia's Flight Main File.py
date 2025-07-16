@@ -88,7 +88,7 @@ def main():
     BLACK = (0,0,0)
 
     scoreboard = Scoreboard(screen)
-    testfairy = Fairy(screen,200,250,"Fairy2.png", "Fairy.png")
+    testfairy = Fairy(screen,25,250,"Fairy2.png", "Fairy.png")
     image1 = pygame.image.load("pixiedust.png")
     dust = pixiedust(image1, random.randint(100, 675), random.randint(100, 300))
     items = []
