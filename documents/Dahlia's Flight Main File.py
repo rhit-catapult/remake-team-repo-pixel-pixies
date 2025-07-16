@@ -118,7 +118,7 @@ def main():
     scoreboard = Scoreboard(screen)
     testfairy = Fairy(screen,25,250,"Fairy2.png", "Fairy.png")
     image1 = pygame.image.load("pixiedust.png")
-    dust = pixiedust(image1, random.randint(100, 675), random.randint(100, 300))
+    dust = pixiedust(image1, random.randint(200, 675), random.randint(100, 300))
     items = []
     items.append(dust)
     pickup_sound = pygame.mixer.Sound("pickupPD.wav")
