@@ -49,6 +49,10 @@ class Fairy:
         hero_grab = pygame.Rect(self.x, self.y, 75, 75)
         return hero_grab.collidepoint((dust.x, dust.y))
 
+    # def Land (self, test):
+    #     hero_land = pygame.Rect(self.x, self.y, 75, 75)
+    #     return hero_land.collidepoint((test.x, test.y))
+
 
 class Scoreboard:
     def __init__(self, screen):
@@ -112,7 +116,7 @@ def main():
     items.append(dust)
     pickup_sound = pygame.mixer.Sound("pickupPD.wav")
 
-    test = Platforms(screen, 10, 375)
+    test = Platforms(screen, 0, 375)
     my_platform = []
     platform_positions = [(600, 50),
                           (150, 160),
@@ -127,20 +131,22 @@ def main():
         clock.tick(60)
         pressed_keys = pygame.key.get_pressed()
         for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
             if event.type == pygame.KEYDOWN:
                 pressed_keys = pygame.key.get_pressed()
                 if pressed_keys[pygame.K_UP]:
                     testfairy.Jump(-100)
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-        for platform in my_platform:
-            platform.draw()
 
         if pressed_keys[pygame.K_LEFT]:
             testfairy.move(-5)
         if pressed_keys[pygame.K_RIGHT]:
             testfairy.move(5)
+
+        for platform in my_platform:
+            platform.draw()
+
+
 
         for item in items:
             item.draw(screen)
