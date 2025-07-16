@@ -100,10 +100,16 @@ class Platforms:
 
 def main():
     pygame.init()
+    font = pygame.font.Font(None, 25)
     screen = pygame.display.set_mode((735, 415))
     pygame.display.set_caption("Dahlia's Flight")
     background = pygame.image.load("Background.jpg")
     clock = pygame.time.Clock()
+
+    instruction_text = "Dahlia's Flight"
+    text_color = (222, 222, 0)
+    instructions_image = font.render(instruction_text, True, text_color)
+
     music = pygame.mixer.Sound("StartingScreenMusic.mp3")
     WHITE = (255,255,255)
     BLACK = (0,0,0)
