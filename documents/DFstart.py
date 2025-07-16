@@ -37,31 +37,31 @@ def distance(point1, point2):
 def main():
     pygame.init()
     screen = pygame.display.set_mode((735, 415))
-    background = pygame.image.load("Background.jpg")
-    screen.blit(background, (0, 0))
+    start_background = pygame.image.load("Level_background.png")
+    game_background = pygame.image.load("Background.jpg")
+    background = start_background
+
 
     # scoreboard = Scoreboard(screen)
     clock = pygame.time.Clock()
-    start = StartButton(screen)
-    start.draw()
+    # start = StartButton(screen)
+    # start.draw()
 
     while True:
         clock.tick(60)
+        screen.blit(background, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-            gamescreen = screen()
+
 
             pressed_keys = pygame.key.get_pressed()
-            # if pressed_keys[pygame.K_UP]:
-            #     scoreboard.score = scoreboard.score + 100
-
             if event.type == pygame.MOUSEBUTTONDOWN:
-                click_position = event.pos
+               background = game_background
 
-        if click_position = StartButton:
-            Screen = pygame.display.gamescreen
+
+
 
 
 
