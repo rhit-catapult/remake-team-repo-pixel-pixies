@@ -163,9 +163,18 @@ def main():
                 if pressed_keys[pygame.K_UP]:
                     testfairy.Jump(-100)
 
-            if testfairy.x == 600:
+            if testfairy.x == 600 and scoreboard.score > 400:
                 background = end_background
-                testfairy.draw()
+
+        if background == end_background:
+            screen.blit(portal, (525, 20))
+            testfairy.draw()
+            scoreboard.draw()
+            testfairy.MagicGravity(5)
+            if pressed_keys[pygame.K_LEFT]:
+                testfairy.move(-5)
+            if pressed_keys[pygame.K_RIGHT]:
+                testfairy.move(5)
 
         if background == game_background:
             hit_a_platform = False
@@ -193,18 +202,14 @@ def main():
                     item.x = random.randint(200, 600)
                     item.y = random.randint(50, 300)
 
-            testfairy.draw()
             scoreboard.draw()
             testfairy.bound()
-
-        if background == end_background:
-            screen.blit(portal, (525, 20))
+            testfairy.draw()
 
         if background == start_background:
             start.draw()
 
         pygame.display.update()
-
 
 if __name__ == "__main__":
     main()
