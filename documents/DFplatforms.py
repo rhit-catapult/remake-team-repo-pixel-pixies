@@ -1,6 +1,8 @@
 import pygame
 import sys
 
+
+
 # player = pygame.transform.scale(pygame.image.load('Fairy.png'),(800,600))
 
 class Platforms:

@@ -130,7 +130,7 @@ def main():
     my_platform = []
     platform_positions = [(600, 155),
                           (150, 160),
-                          (345, 300)]
+                           (345, 300)]
 
     for x,y in platform_positions:
         new_platforms = Platforms(screen, x, y)
@@ -150,8 +150,6 @@ def main():
                 if retangal.collidepoint(event.pos):
                     background = game_background
 
-
-
             if event.type == pygame.KEYDOWN:
                 pressed_keys = pygame.key.get_pressed()
                 if pressed_keys[pygame.K_UP]:
@@ -163,7 +161,7 @@ def main():
                 platform.draw()
                 hit = testfairy.Land(platform)
                 if hit == True:
-                    # print(platform.rect)
+                    print(platform.rect)
                     hit_a_platform = True
             if hit_a_platform == False:
                 testfairy.MagicGravity(5)
