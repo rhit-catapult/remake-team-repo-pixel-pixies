@@ -93,14 +93,6 @@ class Platforms:
     def draw(self):
         pygame.draw.rect(self.screen, (112, 59, 40), (self.x, self.y, 100, 40))
 
-    def too_close(self):
-        if self.x > self.screen.get_width():
-            return True
-        if self.y > self.screen.get_height():
-            return True
-        return False
-
-
 def main():
     pygame.init()
     IMAGE_X = 735
