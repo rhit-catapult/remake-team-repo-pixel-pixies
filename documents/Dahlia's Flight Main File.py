@@ -114,6 +114,7 @@ def main():
     start_background = pygame.transform.scale(start_background, (IMAGE_X, IMAGE_Y))
     background = start_background
     portal = pygame.image.load("portal.png")
+    portal = pygame.transform.scale(portal, (300, 300))
 
     clock = pygame.time.Clock()
     start = DFstart.StartButton(screen)
@@ -195,11 +196,11 @@ def main():
             scoreboard.draw()
             testfairy.bound()
 
-        else:
-            start.draw()
-
         if background == end_background:
             screen.blit(portal, (525, 20))
+
+        if background == start_background:
+            start.draw()
 
         pygame.display.update()
 
