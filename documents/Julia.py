@@ -34,6 +34,10 @@ class Fairy:
         if self.x > right_bound:
             self.x = right_bound
 
+    def bound(self):
+        if self.x > 600:
+            self.x = 600
+
     def Jump (self,Jump_hight):
         self.y = self.y + Jump_hight
         self.Hightlimit()
@@ -57,36 +61,42 @@ class Fairy:
 
 def main():
     pygame.init()
-    IMAGE_X = 735
-    IMAGE_Y = 415
-    screen = pygame.display.set_mode((IMAGE_X, IMAGE_Y))
-    testfairy = Fairy(screen, 25, 250, "Fairy2.png", "Fairy.png")
+    screen = pygame.display.set_mode((735, 415))
+    game_background = pygame.image.load("background.jpg")
+    end_background = pygame.image.load("Clearing.png")
+    end_background = pygame.transform.scale(end_background, (735, 415))
+    image = pygame.image.load("portal.png")
+    image = pygame.transform.scale(image, (300, 300))
+    background = game_background
+    testfairy = Fairy(screen,25,250,"Fairy2.png", "Fairy.png")
+
+    clock = pygame.time.Clock()
 
     while True:
-
         screen.blit(background, (0, 0))
         clock.tick(60)
-
-        start_background = pygame.image.load("Level_background.png")
-        game_background = pygame.image.load("Background.jpg")
-        game_background = pygame.transform.scale(game_background, (IMAGE_X, IMAGE_Y))
-        start_background = pygame.transform.scale(start_background, (IMAGE_X, IMAGE_Y))
-        background = start_background
-
-
         pressed_keys = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-
             if event.type == pygame.KEYDOWN:
                 pressed_keys = pygame.key.get_pressed()
                 if pressed_keys[pygame.K_UP]:
                     testfairy.Jump(-100)
 
-                testfairy.draw()
+            if testfairy.x == 600:
+                background = end_background
+        
+        if background == end_background:
+            screen.blit(image, (525, 20))
 
-                pygame.display.update()
+        if pressed_keys[pygame.K_LEFT]:
+            testfairy.move(-5)
+        if pressed_keys[pygame.K_RIGHT]:
+            testfairy.move(5)
 
-if __name__ == "__main__":
-    main()
+        testfairy.draw()
+        testfairy.bound()
+        pygame.display.update()
+
+main()

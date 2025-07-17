@@ -52,7 +52,7 @@ class Fairy:
         return hero_grab.collidepoint((dust.x, dust.y))
 
     def Land (self, platform):
-        hero_land = pygame.Rect(self.x, self.y + 100, 150, 150)
+        hero_land = pygame.Rect(self.x + 25, self.y + 40, 75, 75)
         return hero_land.colliderect(platform.rect)
 
 
@@ -161,7 +161,7 @@ def main():
                 platform.draw()
                 hit = testfairy.Land(platform)
                 if hit == True:
-                    print(platform.rect)
+                    #print(platform.rect)
                     hit_a_platform = True
             if hit_a_platform == False:
                 testfairy.MagicGravity(5)
