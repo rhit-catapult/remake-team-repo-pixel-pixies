@@ -35,6 +35,10 @@ class Fairy:
         if self.x > right_bound:
             self.x = right_bound
 
+    def bound(self):
+        if self.x > 600:
+            self.x = 600
+
     def Jump (self,Jump_hight):
         self.y = self.y + Jump_hight
         self.Hightlimit()
@@ -104,9 +108,12 @@ def main():
 
     start_background = pygame.image.load("Level_background.png")
     game_background = pygame.image.load("Background.jpg")
+    end_background = pygame.image.load("Clearing.png")
+    end_background = pygame.transform.scale(end_background, (735, 415))
     game_background = pygame.transform.scale(game_background, (IMAGE_X, IMAGE_Y))
     start_background = pygame.transform.scale(start_background, (IMAGE_X, IMAGE_Y))
     background = start_background
+    portal = pygame.image.load("portal.png")
 
     clock = pygame.time.Clock()
     start = DFstart.StartButton(screen)
@@ -155,6 +162,9 @@ def main():
                 if pressed_keys[pygame.K_UP]:
                     testfairy.Jump(-100)
 
+            if testfairy.x == 600:
+                background = end_background
+
         if background == game_background:
             hit_a_platform = False
             for platform in my_platform:
@@ -183,10 +193,13 @@ def main():
 
             testfairy.draw()
             scoreboard.draw()
+            testfairy.bound()
 
         else:
             start.draw()
 
+        if background == end_background:
+            screen.blit(portal, (525, 20))
 
         pygame.display.update()
 

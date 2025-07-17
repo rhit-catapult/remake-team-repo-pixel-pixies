@@ -86,7 +86,7 @@ def main():
 
             if testfairy.x == 600:
                 background = end_background
-        
+
         if background == end_background:
             screen.blit(image, (525, 20))
 
