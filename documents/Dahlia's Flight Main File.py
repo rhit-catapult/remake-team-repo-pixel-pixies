@@ -136,9 +136,9 @@ def main():
     pickup_sound = pygame.mixer.Sound("pickupPD.wav")
 
     my_platform = []
-    platform_positions = [(600, 155),
-                          (150, 160),
-                           (345, 300)]
+    platform_positions = [(600, 190),
+                          (150, 300),
+                           (345, 160)]
 
     for x,y in platform_positions:
         new_platforms = Platforms(screen, x, y)
@@ -165,6 +165,7 @@ def main():
 
             if testfairy.x == 600:
                 background = end_background
+                testfairy.draw()
 
         if background == game_background:
             hit_a_platform = False
