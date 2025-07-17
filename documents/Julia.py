@@ -73,7 +73,7 @@ def main():
         start_background = pygame.transform.scale(start_background, (IMAGE_X, IMAGE_Y))
         background = start_background
 
-        
+
         pressed_keys = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
