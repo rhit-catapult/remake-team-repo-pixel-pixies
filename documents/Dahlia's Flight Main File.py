@@ -118,7 +118,6 @@ def main():
 
     clock = pygame.time.Clock()
     start = DFstart.StartButton(screen)
-
     instruction_text = "Dahlia's Flight"
     text_color = (222, 222, 0)
     instructions_image = font.render(instruction_text, True, text_color)
