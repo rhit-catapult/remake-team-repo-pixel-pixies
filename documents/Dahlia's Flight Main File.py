@@ -166,10 +166,16 @@ def main():
                 background = end_background
 
         if background == end_background:
-            screen.blit(portal, (525, 20))
+            screen.blit(portal, (screen.get_width()/2-120, screen.get_height()/2-100))
             testfairy.draw()
             scoreboard.draw()
             testfairy.MagicGravity(5)
+            font2 = pygame.font.SysFont("Times New Roman", 45)
+            font3 = pygame.font.SysFont("Times New Roman", 15)
+            caption2 = font2.render("Congrats! You won!!", True, WHITE)
+            screen.blit(caption2, (screen.get_width()/2 - caption2.get_width()/2, screen.get_height()/2-150))
+            caption3 = font3.render("(Also sorry our portal doesn't work)", True, WHITE)
+            screen.blit(caption3, (screen.get_width()/2 - caption2.get_width()/2 + 85, screen.get_height()/2+165))
             if pressed_keys[pygame.K_LEFT]:
                 testfairy.move(-5)
             if pressed_keys[pygame.K_RIGHT]:
